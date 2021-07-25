@@ -1,6 +1,6 @@
 # Hackerrank-Solutions
 
-## Solutions are given in the notebook of the given below problems:
+## Solutions are given in the notebook of the below problems:
 1. Athlete Sort
 2. Triangle Quest
 3. Validating Email Addresses with Filter
