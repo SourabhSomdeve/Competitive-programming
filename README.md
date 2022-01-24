@@ -1,4 +1,4 @@
-# In this repo I have solve the problems of various competative coding platforms.
+# In this repo I have solve the problems of various competitive coding platforms.
 
 # Hackerrank-Solutions
 
