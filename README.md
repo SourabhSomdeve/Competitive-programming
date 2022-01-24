@@ -1,3 +1,5 @@
+# This repositories is for competative programming
+
 # Hackerrank-Solutions
 
 ## Solutions are given in the notebook of the below problems:
