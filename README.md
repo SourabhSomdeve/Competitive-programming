@@ -1,4 +1,4 @@
-# This repositories is for competative programming
+# In this repo I have solve the problems of various competative coding platforms.
 
 # Hackerrank-Solutions
 
