@@ -104,8 +104,6 @@ class BinarySearchTreeNode:
         
         return self.right.findMax()
 
-        
-
     def calcSum(self):
 
         # total_sum = 0
@@ -120,8 +118,67 @@ class BinarySearchTreeNode:
             right_sum = self.right.calcSum()
         else:
             right_sum = 0
-            
+
         return self.data + left_sum + right_sum
+
+    def delete(self,val):
+
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        
+        else:
+            if self.left is None and self.right is None:
+                return None
+
+            elif self.left is None:
+                return self.right
+
+            elif self.right is None:
+                return self.left
+            
+            min_val = self.right.findMin()
+            self.data = min_val
+            self.right = self.right.delete(min_val)
+
+        return self
+
+    # Alternate approach for deleting elements
+    def alt_delete(self,val):
+
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        
+        else:
+            if self.left is None and self.right is None:
+                return None
+
+            elif self.left is None:
+                return self.right
+
+            elif self.right is None:
+                return self.left
+            
+            max_val = self.left.findMax()
+            self.data = max_val
+            self.left = self.left.delete(max_val)
+
+        return self
+
+def maxDepth(root):
+    if not root:
+        return 0
+
+    return max(maxDepth(root.left), maxDepth(root.right)) + 1
 
 def buildTree(elements):
     
@@ -135,22 +192,29 @@ def buildTree(elements):
 if __name__ == '__main__':
     # numbers = [15,12,7,14,27,20,23,88 ]
     numbers = [17, 4, 1, 20, 9, 23, 18, 34]
-    # numbers = [5,1,6,4,2]
+    # numbers = [9,3,20,15,7]
 
     numbers_tree = buildTree(numbers)
 
-    # print("The Number is present on the list ?",numbers_tree.search(10))
+    print("The Number is present on the list ?",numbers_tree.search(10))
 
-    # print(f"Printing the In-Order Traversal and it gives sorted list: {numbers_tree.inOrderTraversal()}")
+    print(f"Printing the In-Order Traversal and it gives sorted list: {numbers_tree.inOrderTraversal()}")
 
-    # print(f"Printing the Pre-Order Traversal: {numbers_tree.preOrderTraversal()}")
+    print(f"Printing the Pre-Order Traversal: {numbers_tree.preOrderTraversal()}")
 
-    # print(f"Printing the Post-Order Traversal: {numbers_tree.postOrderTraversal()}")
+    print(f"Printing the Post-Order Traversal: {numbers_tree.postOrderTraversal()}")
 
-    # print(f"The minimum element in the binary search Tree:{numbers_tree.findMin()}")
+    print(f"The minimum element in the binary search Tree:{numbers_tree.findMin()}")
 
-    # print(f"The maximum element in the binary search Tree:{numbers_tree.findMax()}")
+    print(f"The maximum element in the binary search Tree:{numbers_tree.findMax()}")
 
-    print(f"The sum of element in the binary search Tree:{numbers_tree.calcSum()}")
+    print(f"The sum of element in the binary search Tree :{numbers_tree.calcSum()}")
+
+    print(f"The depth of BST: {maxDepth(numbers_tree)}")
+
+    numbers_tree.delete(20)
+
+    # numbers_tree.alt_delete(20)
+    print(f"After Deleting the element i.e 20 in BST: {numbers_tree.inOrderTraversal()}")
 
     # print(numbers_tree)
